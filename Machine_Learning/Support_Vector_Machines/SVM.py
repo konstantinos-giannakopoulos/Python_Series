@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_breast_cancer
+import pickle
 
 '''
 Goal: Predict if malignant or benign
@@ -16,16 +17,29 @@ print(data.target_names)
 X = data.data
 Y = data.target
 
-# 3) Splitting data
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1, random_state=30)
+best_accuracy = 0
 
-# 4) Apply k-NNN, NB, Logistic Regression, Decision Tree, Random Forest
-model = SVC(kernel='linear',C=3)
-model.fit(X_train, Y_train)
-accuracy = model.score(X_test, Y_test)
-print(accuracy)
+for x in range(10):
+    # 3) Splitting data
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1, random_state=30)
 
-# 5) Make predictions
+    # 4) Apply k-NNN, NB, Logistic Regression, Decision Tree, Random Forest
+    model = SVC(kernel='linear',C=3)
+    model.fit(X_train, Y_train)
+    accuracy = model.score(X_test, Y_test)
+    print(x , ' --> ', accuracy)
+    if accuracy > best_accuracy:
+        best_accuracy = accuracy
+        print("Best accuracy:", accuracy)
+        # 5) Save model
+        with open('model.pickle', 'wb') as file:
+            pickle.dump(model, file)
+
+# 6) Load model
+with open('model.pickle', 'rb') as file:
+    model = pickle.load(file)
+
+# 7) Make predictions
 X_new  = np.array([[1.799e+01, 1.038e+01, 1.228e+02, 1.001e+03, 1.184e-01, 2.776e-01, 3.001e-01,
  1.471e-01, 2.419e-01, 7.871e-02, 1.095e+00, 9.053e-01, 8.589e+00, 1.534e+02,
  6.399e-03, 4.904e-02, 5.373e-02, 1.587e-02, 3.003e-02, 6.193e-03, 2.538e+01,
