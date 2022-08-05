@@ -2,7 +2,7 @@ import bs4 as bs
 import requests
 import pickle
 
-'''
+
 # 1) Webscraping
 def load_sp500_tickers():
     # html requests
@@ -88,7 +88,7 @@ for ticker in tickers:
         
 main_df.to_csv('sp500_data.csv')
 print("Data compiled!")
-'''
+
 
 # 4) Visualizing Data
 import pandas as pd
