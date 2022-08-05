@@ -2,7 +2,7 @@ import bs4 as bs
 import requests
 import pickle
 
-
+'''
 # 1) Webscraping
 def load_sp500_tickers():
     # html requests
@@ -34,6 +34,7 @@ with open("sp500tickers.pickle",  'wb') as f:
 import os
 import datetime as dt
 import pandas_datareader as web
+import pandas as pd
 
 def load_prices(reload_tickers=False):
     if reload_tickers:
@@ -66,7 +67,40 @@ with open('sp500tickers.pickle','rb') as f:
 main_df = pd.DataFrame()
 
 print("Compiling data... ")
+for ticker in tickers:
+    print(ticker)
+    try: 
+        df = pd.read_csv('companies/{}.csv'.format(ticker))
+        df.set_index('Date', inplace=True)
+        df.rename(columns = {'Adj Close': ticker}, inplace=True)
+        df.drop(['Open', 'High', 'Low', 'Close'], 1, inplace=True)
+        #print(df.head(5))
+        #print()
+        if main_df.empty:
+            main_df = df
+            #print(main_df)
+        else:
+            main_df = main_df.join(df, on='Date', how='outer', lsuffix='_left', rsuffix='_right')
+            #main_df = main_df.merge(df, main_df, on='Date')
+    except:
+        print("Error in: ", ticker)
+    #print(main_df.head(5))
+        
+main_df.to_csv('sp500_data.csv')
+print("Data compiled!")
+'''
+
 # 4) Visualizing Data
+import pandas as pd
+import matplotlib.pyplot as plt
+
+sp500 = pd.read_csv('sp500_data.csv')
+#print(sp500.head())
+sp500['MSFT'].plot()
+plt.show()
 # 5) Correlations
+correlation = sp500.corr()
+#print(correlation)
 
-
+plt.matshow(correlation)
+plt.show()
