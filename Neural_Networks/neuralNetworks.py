@@ -1,3 +1,4 @@
+# An ordinary Feed Forward Neural Network
 # handwritten digit recognition
 
 import cv2
