@@ -64,7 +64,7 @@ Topics
 	
   	c) Thresholding
 	
-		1) Mask Application
+		c1) Mask Application
 	
   	d) Filtering
 	
