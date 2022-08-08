@@ -70,5 +70,14 @@ Topics
 	
   	d) Filtering
 	
-  	c) Object Recognition
+  	e) Object Recognition
 	
+		c1) Edge Detection
+		
+		c2) Template Matching
+
+		c3) Feature Matching
+		
+		c4) Movement Detection
+		
+		c5) Object Recognition
