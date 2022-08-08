@@ -65,6 +65,8 @@ Topics
   	c) Thresholding
 	
 		c1) Mask Application
+		
+		c2) Making Poorly Lit Images Readable
 	
   	d) Filtering
 	
