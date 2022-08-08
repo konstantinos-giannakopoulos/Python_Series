@@ -64,6 +64,8 @@ Topics
 	
   	c) Thresholding
 	
+		c1) Mask Application
+	
   	d) Filtering
 	
   	c) Object Recognition
