@@ -1,8 +1,9 @@
 # Python_Series
 Python coding examples
 
-[Source 1](https://github.com/NeuralNine)
-[Source 2](https://www.neuralnine.com/books/)
+[Source 1 - NeuralNine Github](https://github.com/NeuralNine)
+
+[Source 2 - NeuralNine Website](https://www.neuralnine.com/books/)
 
 Topics
 1) Programming 
